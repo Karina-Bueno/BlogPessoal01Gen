@@ -37,16 +37,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception { //assim que o método for iniciado, vai instanciar um HttpSecurity
-				http.authorizeRequests()
-				.antMatchers("/usuarios/logar").permitAll() // libera endpoints para o cliente conseguir fazer requisições dentro da api sem precisar de token
-				.antMatchers("/usuarios/cadastrar").permitAll()
-				.antMatchers("/usuarios/atualizar").permitAll()
-				.antMatchers(HttpMethod.OPTIONS).permitAll()
-				.anyRequest().authenticated() // todas as outras requisições deverão ser autenticadas
-				.and().httpBasic()
-				.and().sessionManagement()/*indica qual o tipo de sessão*/.sessionCreationPolicy(SessionCreationPolicy.STATELESS)//não guarda nenhuma sessão
-				.and().cors() //habilita o cors
-				.and().csrf().disable(); //desabilita o csrf
+				
 	}
 
 }
